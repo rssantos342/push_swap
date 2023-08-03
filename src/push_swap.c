@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:34:25 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/08/02 11:58:47 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/08/03 12:58:25 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	count_ac(char **av)
 	return (i + 1);
 }
 
-void	ft_ps_args(int ac, t_stack *stack_a, t_stack *stack_b)
+void	ft_ps_args(t_stack *stack_a, t_stack *stack_b, int ac)
 {
 	if (ac >= 2 && ac <= 5)
 	{
@@ -89,5 +89,5 @@ int	main(int ac, char **av)
 	}
 	ft_check_dup(stack_a);
 	ft_check_int(stack_a);
-	ft_ps_args(ac, stack_a, stack_b);
+	ft_ps_args(stack_a, stack_b, ac);
 }

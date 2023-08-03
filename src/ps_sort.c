@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:04:34 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/07/31 17:57:16 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:03:58 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_sort_four(t_stack **stack_a, t_stack **stack_b)
 
 	if (ft_check_sorted(*stack_a))
 		return ;
-	i = min_index(stack_a);
+	i = index_min_sa(stack_a);
 	min_four(stack_a, stack_b, i);
 	ft_sort_three(stack_a);
 	ft_pa(stack_a, stack_b);
@@ -94,13 +94,13 @@ void	min_four(t_stack **stack_a, t_stack **stack_b, int i)
 
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
-	int		i;
+	int	i;
 
 	if (ft_check_sorted(*stack_a))
 		return ;
-	i = min_index(stack_a);
+	i = index_min_sa(stack_a);
 	min_five(stack_a, stack_b, i);
-	i = min_index(stack_a);
+	i = index_min_sa(stack_a);
 	min_four(stack_a, stack_b, i);
 	ft_sort_three(stack_a);
 	ft_pa(stack_a, stack_b);

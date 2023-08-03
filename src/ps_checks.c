@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:58:30 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/08/01 16:32:57 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/08/03 12:27:09 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	ft_check_int(t_stack *stack_a)
 	head_a = stack_a;
 	while (stack_a)
 	{
-		if (stack_a->data < -2147483648 || stack_a->data > 2147483647)
+		if (stack_a->data < INT_MIN || stack_a->data > INT_MAX)
 		{
 			ft_error_exit(head_a, 0);
 		}

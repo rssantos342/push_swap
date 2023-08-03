@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:58:14 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/08/02 13:06:27 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/08/03 10:26:20 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	sort_above_five(t_stack **stack_a, t_stack **stack_b)
 	inf_a.size = ft_lstsize_ps(*stack_a);
 	while (inf_a.size > 3)
 	{
-		a_nbr2sort = a_nbr2move(*stack_a, *stack_b, inf_a);
+		a_nbr2sort = nbr2move_sa(*stack_a, *stack_b, inf_a);
 		a_nbr2sort.size = ft_lstsize_ps(*stack_a);
-		b_nbr_target = b_target(*stack_b, a_nbr2sort.data);
+		b_nbr_target = target_nbr_sb(*stack_b, a_nbr2sort.data);
 		b_nbr_target.size = ft_lstsize_ps(*stack_b);
 		ft_sort(stack_a, stack_b, a_nbr2sort, b_nbr_target);
 		inf_a.size = ft_lstsize_ps(*stack_a);
@@ -37,7 +37,7 @@ void	sort_above_five(t_stack **stack_a, t_stack **stack_b)
 	ft_rotate_stack_a(stack_a);
 }
 
-t_info	a_nbr2move(t_stack *stack_a, t_stack *stack_b, t_info inf_a)
+t_info	nbr2move_sa(t_stack *stack_a, t_stack *stack_b, t_info inf_a)
 {
 	t_stack	*temp_a;
 	t_info	nbr2move_sa;

@@ -6,13 +6,13 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:44:47 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/08/02 10:52:24 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:03:55 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_info	b_target(t_stack *stack_b, int data_a)
+t_info	target_nbr_sb(t_stack *stack_b, int data_a)
 {
 	t_stack	*temp_b;
 	t_info	b_target;
@@ -42,17 +42,17 @@ t_info	b_target(t_stack *stack_b, int data_a)
 void	ft_sort(t_stack **stack_a, t_stack **stack_b, \
 				t_info a_nbr2sort, t_info b_target)
 {
-	ab_top(stack_a, stack_b, a_nbr2sort, b_target);
-	if ((*stack_a)->data == a_nbr2sort.data && \
-			(*stack_b)->data != b_target.data)
-		b_top(stack_b, b_target);
-	else if ((*stack_a)->data != a_nbr2sort.data && \
+	top_sa_sb(stack_a, stack_b, a_nbr2sort, b_target);
+	if ((*stack_a)->data != a_nbr2sort.data && \
 				(*stack_b)->data == b_target.data)
-		a_top(stack_a, a_nbr2sort);
+		top_sa(stack_a, a_nbr2sort);
+	else if ((*stack_a)->data == a_nbr2sort.data && \
+			(*stack_b)->data != b_target.data)
+		top_sb(stack_b, b_target);
 	ft_pb(stack_a, stack_b);
 }
 
-void	ab_top(t_stack **stack_a, t_stack **stack_b, \
+void	top_sa_sb(t_stack **stack_a, t_stack **stack_b, \
 				t_info a_nbr2sort, t_info b_target)
 {
 	while ((*stack_a)->data != a_nbr2sort.data && \
@@ -72,18 +72,7 @@ void	ab_top(t_stack **stack_a, t_stack **stack_b, \
 	}
 }
 
-void	b_top(t_stack **stack_b, t_info b_target)
-{
-	while ((*stack_b)->data != b_target.data)
-	{
-		if (b_target.index > b_target.size / 2)
-			ft_rrb(stack_b, 0);
-		else
-			ft_rb(stack_b, 0);
-	}
-}
-
-void	a_top(t_stack **stack_a, t_info a_nbr2sort)
+void	top_sa(t_stack **stack_a, t_info a_nbr2sort)
 {
 	while ((*stack_a)->data != a_nbr2sort.data)
 	{
@@ -91,5 +80,16 @@ void	a_top(t_stack **stack_a, t_info a_nbr2sort)
 			ft_rra(stack_a, 0);
 		else
 			ft_ra(stack_a, 0);
+	}
+}
+
+void	top_sb(t_stack **stack_b, t_info b_target)
+{
+	while ((*stack_b)->data != b_target.data)
+	{
+		if (b_target.index > b_target.size / 2)
+			ft_rrb(stack_b, 0);
+		else
+			ft_rb(stack_b, 0);
 	}
 }

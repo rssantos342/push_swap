@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:12:19 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/07/31 15:06:01 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/08/03 12:43:51 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ t_stack	*ft_stack_init(char **av, int i)
 	t_stack	*head_a;
 
 	head_a = NULL;
-	stack_a = ft_new_stack(ft_atoi_mod(av[i]));
+	stack_a = ft_new_stack(ft_long_atoi(av[i]));
 	head_a = stack_a;
 	i++;
 	while (av[i])
 	{
-		stack_a->next = ft_new_stack(ft_atoi_mod(av[i]));
+		stack_a->next = ft_new_stack(ft_long_atoi(av[i]));
 		stack_a = stack_a->next;
 		i++;
 	}
@@ -42,7 +42,7 @@ t_stack	*ft_new_stack(long nbr)
 	return (node);
 }
 
-long	ft_atoi_mod(const char *str)
+long	ft_long_atoi(const char *str)
 {
 	int			sign;
 	long int	nbr;

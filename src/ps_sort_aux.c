@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 12:04:48 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/07/31 17:01:33 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:54:45 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_max(t_stack *lst)
 	return (max);
 }
 
-int	min_index(t_stack **stack_a)
+int	index_min_sa(t_stack **stack_a)
 {
 	t_stack	*temp;
 	int		i;
@@ -60,7 +60,7 @@ int	min_index(t_stack **stack_a)
 void	min_five(t_stack **stack_a, t_stack **stack_b, int i)
 {
 	if (i <= 2)
-		min_four (stack_a, stack_b, i);
+		min_four(stack_a, stack_b, i);
 	else if (i == 3)
 	{
 		ft_rra(stack_a, 0);
