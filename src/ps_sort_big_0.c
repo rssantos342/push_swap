@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:58:14 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/08/03 10:26:20 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/08/08 16:22:30 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,31 +75,6 @@ int	ft_min_max(t_stack *stack_b, t_info inf_a)
 	return (nbr_moves(inf_a, inf_b));
 }
 
-int	nbr_moves(t_info inf_a, t_info inf_b)
-{
-	int	nbr_mvs;
-
-	nbr_mvs = 0;
-	if (inf_a.index > 0 && inf_b.index > 0)
-	{
-		if ((inf_a.index >= inf_a.size / 2 && \
-			inf_b.index >= inf_b.size / 2))
-			nbr_mvs = nbr_moves_aux(inf_a.size - inf_a.index, \
-						inf_b.size - inf_b.index);
-		else if (inf_a.index > inf_a.size / 2 && \
-			inf_b.index < inf_b.size / 2)
-			nbr_mvs = (inf_a.size - inf_a.index) + inf_b.index;
-		else if (inf_a.index < inf_a.size / 2 && \
-			inf_b.index > inf_b.size / 2)
-			nbr_mvs = (inf_b.size - inf_b.index) + inf_a.index;
-		else
-			nbr_mvs = nbr_moves_aux(inf_a.index, inf_b.index);
-	}
-	else
-		nbr_mvs = nbr_moves_aux(inf_a.index, inf_b.index);
-	return (nbr_mvs + 1);
-}
-
 int	btw_min_max(t_stack *stack_b, int data_a, t_info inf_a)
 {
 	t_stack	*temp_b;
@@ -120,4 +95,25 @@ int	btw_min_max(t_stack *stack_b, int data_a, t_info inf_a)
 	}
 	inf_b.index = ft_check_pos(stack_b, min_b);
 	return (nbr_moves(inf_a, inf_b));
+}
+
+int	nbr_moves(t_info inf_a, t_info inf_b)
+{
+	int	nbr_mvs;
+
+	nbr_mvs = 0;
+	if (inf_a.index > 0 && inf_b.index > 0)
+	{
+		nbr_mvs = ft_index_ab_above_0(inf_a, inf_b, nbr_mvs);
+	}
+	else
+	{
+		if (inf_a.index >= inf_a.size / 2)
+			nbr_mvs = inf_a.size - inf_a.index;
+		else if (inf_b.index >= inf_b.size / 2)
+			nbr_mvs = inf_b.size - inf_b.index;
+		else
+			nbr_mvs = nbr_moves_aux(inf_a.index, inf_b.index);
+	}
+	return (nbr_mvs + 1);
 }

@@ -6,7 +6,7 @@
 /*   By: ride-sou <ride-sou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:47:15 by ride-sou          #+#    #+#             */
-/*   Updated: 2023/08/02 12:39:22 by ride-sou         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:49:10 by ride-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,21 @@ int	nbr_moves_aux(int a, int b)
 		return (b);
 	else
 		return (a);
+}
+
+int	ft_index_ab_above_0(t_info inf_a, t_info inf_b, int nbr_mvs)
+{
+	if ((inf_a.index >= inf_a.size / 2 && \
+			inf_b.index >= inf_b.size / 2))
+		nbr_mvs = nbr_moves_aux(inf_a.size - inf_a.index, \
+				inf_b.size - inf_b.index);
+	else if (inf_a.index > inf_a.size / 2 && \
+			inf_b.index < inf_b.size / 2)
+		nbr_mvs = (inf_a.size - inf_a.index) + inf_b.index;
+	else if (inf_a.index < inf_a.size / 2 && \
+			inf_b.index > inf_b.size / 2)
+		nbr_mvs = (inf_b.size - inf_b.index) + inf_a.index;
+	else
+		nbr_mvs = nbr_moves_aux(inf_a.index, inf_b.index);
+	return (nbr_mvs);
 }
